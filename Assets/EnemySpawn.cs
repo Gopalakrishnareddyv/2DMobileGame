@@ -6,6 +6,7 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject currentenemy;
+    Score score;
     Stack<GameObject> enemypool = new Stack<GameObject>();
     private static EnemySpawn instance;
 
@@ -24,6 +25,7 @@ public class EnemySpawn : MonoBehaviour
     void Start()
     {
         StartSpawn();
+        score = GameObject.Find("ScoreManager").GetComponent<Score>();
     }
     public void CreatePool()
     {
@@ -35,6 +37,8 @@ public class EnemySpawn : MonoBehaviour
     {
         enemypool.Push(enemytemp);
         enemypool.Peek().SetActive(false);
+        score.Increment();
+
     }
     // Update is called once per frame
     public void SpawnEnemy()

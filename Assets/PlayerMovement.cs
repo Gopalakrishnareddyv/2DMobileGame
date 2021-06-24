@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     SpriteRenderer sprite;
-    float xInput = 0f;
+    public float xInput;
+    public float playerspeed=100.0f;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         {
             xInput = 0f;
         }
-        rb.AddForce(transform.right*xInput*100.0f);
+        rb.AddForce(transform.right*xInput*playerspeed);
         
     }
     void FlipPlayer()
